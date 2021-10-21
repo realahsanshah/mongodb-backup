@@ -1,6 +1,5 @@
 const fs = require('fs');
 var exec = require('child_process').exec;
-const schedule = require('node-schedule');
 
 function createBackup(
     host='localhost',

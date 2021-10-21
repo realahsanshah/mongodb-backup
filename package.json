@@ -9,8 +9,6 @@
   "author": "Ahsan Shah <shahahsan56@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "mongodb-backup": "^1.6.9",
-    "node-schedule": "^2.0.0"
   },
   "repository": {
     "type": "git",
