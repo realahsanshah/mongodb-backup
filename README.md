@@ -1,5 +1,7 @@
 # Mongodb Backup
 
+[NPM version](https://www.npmjs.com/package/mongodb-backup-dump)
+
 ## What can it do ?
 A package to backup or restore your MongoDB data to your system. You can also set a schedule to automatically create backup of MongoDB database.
 
