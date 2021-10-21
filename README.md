@@ -112,8 +112,5 @@ The cron format consists of:
 └───────────────────────── second (0 - 59)
 ```
 
-Examples with the cron format:
-
-
 
 
