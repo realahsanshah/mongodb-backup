@@ -1,0 +1,31 @@
+{
+  "name": "mongodb-backup-dump",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ahsan Shah <shahahsan56@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/realsashah/mongodb-backup.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongodb",
+    "mongodb-backup",
+    "backup",
+    "mongodb-restore",
+    "mongodb-backup-cron",
+    "mongodb-backup-schedule"
+  ],
+  "bugs": {
+    "url": "https://github.com/realsashah/mongodb-backup/issues"
+  },
+  "homepage": "https://github.com/realsashah/mongodb-backup",
+  "dependencies": {
+    "cron": "^1.8.2"
+  }
+}
