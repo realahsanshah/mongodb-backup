@@ -1,6 +1,6 @@
 {
   "name": "mongodb-backup-dump",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/realsashah/mongodb-backup/issues"
   },
-  "homepage": "https://github.com/realsashah/mongodb-backup"
+  "homepage": "https://github.com/realsashah/mongodb-backup",
+  "dependencies": {
+    "cron": "^1.8.2"
+  }
 }
