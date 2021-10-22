@@ -15,7 +15,7 @@ function createBackup(
     
     const cmd = `mongodump --host ${host} --port ${port} --out ./backup/${dest}`;
 
-    exec(cmd, function (error, stdout, stderr) {
+    exec(cmd,{maxBuffer: 1024 * 100 * 1024} , function (error, stdout, stderr) {
         if(error){
             console.log("error",error)
         }
@@ -37,9 +37,9 @@ function restoreBackup(
     if(!fs.existsSync(src)){
         console.log(`Cannot find directory ${src}`);
     }
-    const cmd = `mongorestore  --host ${host} --port ${port} --out ${src}`;
+    const cmd = `mongorestore  --host ${host} --port ${port} --dir ${src}`;
 
-    exec(cmd, function (error, stdout, stderr) {
+    exec(cmd,{maxBuffer: 1024 * 100 * 1024} ,function (error) {
         if(error){
             console.log("error",error)
         }
