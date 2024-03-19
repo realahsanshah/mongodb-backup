@@ -1,6 +1,7 @@
 const fs = require("fs");
 var exec = require("child_process").exec;
 var CronJob = require("cron").CronJob;
+require("dotenv").config();
 
 function createBackup(
   host = "localhost",
@@ -58,9 +59,12 @@ function scheduleBackup(
 }
 
 dest = new Date().toISOString();
-const host = "localhost";
-const port = 27017;
+const host = process.env.HOST;
+const port = process.env.PORT;
+console.log(host, port, dest);
 createBackup(host, port, dest);
+
+scheduleBackup("* * 1 * * *", host, port, dest);
 
 module.exports = {
   createBackup,

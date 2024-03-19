@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/realsashah/mongodb-backup",
   "dependencies": {
-    "cron": "^1.8.2"
+    "cron": "^1.8.2",
+    "dotenv": "^16.4.5"
   }
 }
