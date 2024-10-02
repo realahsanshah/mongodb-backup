@@ -47,7 +47,7 @@ function restoreBackup(src, host = "localhost", port = 27017) {
 }
 
 function scheduleBackup(
-  cronScheduler = "* * 1 * * *",
+  cronScheduler = "0 1 * * *",
   host = "localhost",
   port = 27017,
   dest = ""
