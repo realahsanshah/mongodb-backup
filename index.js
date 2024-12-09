@@ -28,10 +28,12 @@ function createBackup(
 function restoreBackup(src, host = "localhost", port = 27017) {
   if (!src) {
     console.log("Please provide a valid dump destination");
+    return;
   }
 
   if (!fs.existsSync(src)) {
     console.log(`Cannot find directory ${src}`);
+    return;
   }
   const cmd = `mongorestore  --host ${host} --port ${port} --dir ${src}`;
 
@@ -41,7 +43,7 @@ function restoreBackup(src, host = "localhost", port = 27017) {
     }
 
     if (!error) {
-      console.log(`Database backup restored from src`);
+      console.log(`Database backup restored from ${src}`);
     }
   });
 }
@@ -52,22 +54,29 @@ function scheduleBackup(
   port = 27017,
   dest = ""
 ) {
-  new CronJob(cronScheduler, function () {
+  const job = new CronJob(cronScheduler, function () {
     dest = new Date().toISOString();
     createBackup(host, port, dest);
   });
+
+  job.start();
+  console.log(`Backup scheduled with cron pattern: ${cronScheduler}`);
 }
 
 dest = new Date().toISOString();
 const host = process.env.HOST;
 const port = process.env.PORT;
-console.log(host, port, dest);
+console.log(`Starting backup service with host: ${host}, port: ${port}`);
 createBackup(host, port, dest);
 
-scheduleBackup("* * 1 * * *", host, port, dest);
+// scheduleBackup("0 0 1 * * *", host, port, dest);
 
-module.exports = {
-  createBackup,
-  restoreBackup,
-  scheduleBackup,
-};
+// schedule backup on 01:50 PM (UTC)
+scheduleBackup("0 50 1 * * *", host, port, dest);
+
+process.stdin.resume();
+
+process.on('SIGINT', () => {
+  console.log('Backup service shutting down...');
+  process.exit(0);
+});
